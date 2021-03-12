@@ -8,17 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let uiLayout = viewUI()
+    let uiAuction = UIAuction()
     
     override func loadView() {
         
-        self.view = uiLayout
+        self.view = uiAuction
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+ 
     }
 }
 
