@@ -70,14 +70,17 @@ class Person: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setup()
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        addPerson()
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(){
+    func addPerson(){
         
         self.container.addArrangedSubview(imPerson)
 
@@ -86,7 +89,9 @@ class Person: UIView {
         self.container.addArrangedSubview(lbValue)
         
         self.addSubview(container)
+    }
         
+    func addConstraints(){
         NSLayoutConstraint.activate([
             
             self.container.bottomAnchor.constraint(equalTo: self.bottomAnchor),

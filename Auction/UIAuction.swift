@@ -9,7 +9,7 @@ import UIKit
 
 class UIAuction: UIView {
     
-    let person1: Person = {
+    let personOne: Person = {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "button1"
         person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson1"
@@ -17,7 +17,7 @@ class UIAuction: UIView {
         return person
     }()
         
-    let person2: Person = {
+    let personTwo: Person = {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "button2"
         person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson2"
@@ -25,7 +25,7 @@ class UIAuction: UIView {
         return person
     }()
     
-    let person3: Person = {
+    let personThree: Person = {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "button3"
         person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson3"
@@ -51,8 +51,8 @@ class UIAuction: UIView {
         
         self.backgroundColor = .systemBackground
 
-        self.addAuctioneer()
-        self.addPerson()
+        self.addUIAuctioneer()
+        self.addUIPerson()
 
     }
     
@@ -60,7 +60,7 @@ class UIAuction: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addAuctioneer(){
+    func addUIAuctioneer(){
         self.addSubview(auctioneer)
 
         NSLayoutConstraint.activate([
@@ -72,11 +72,11 @@ class UIAuction: UIView {
         ])
     }
     
-    func addPerson(){
+    func addUIPerson(){
 
-        container.addArrangedSubview(person1)
-        container.addArrangedSubview(person2)
-        container.addArrangedSubview(person3)
+        container.addArrangedSubview(personOne)
+        container.addArrangedSubview(personTwo)
+        container.addArrangedSubview(personThree)
 
         self.addSubview(container)
             
