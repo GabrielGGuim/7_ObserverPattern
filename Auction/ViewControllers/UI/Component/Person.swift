@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol SendValueProtocol: class{
+    func sendValue(text: String, indentify:String)
+}
+
 class Person: UIView {
     
+    weak var delegate: SendValueProtocol?
+
     let imPerson: UIImageView = {
         let iv = UIImageView()
-    
+        
         iv.image = UIImage.init(systemName: "person")
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -27,8 +33,7 @@ class Person: UIView {
         tf.keyboardType = UIKeyboardType.numberPad
         tf.returnKeyType = UIReturnKeyType.done
         tf.clearButtonMode = UITextField.ViewMode.whileEditing
-
-        tf.addTarget(self, action: #selector(editValueFirstPerson), for: .editingChanged)
+        
         tf.translatesAutoresizingMaskIntoConstraints = false
         
         return tf
@@ -41,7 +46,7 @@ class Person: UIView {
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .medium)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(setValueFirstPerson), for: .touchUpInside)
-
+        
         return btn
     }()
     
@@ -52,7 +57,7 @@ class Person: UIView {
         lb.textAlignment = .center
         lb.text = "Value"
         lb.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return lb
     }()
     
@@ -61,7 +66,7 @@ class Person: UIView {
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 8
-
+        
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         return stack
@@ -69,9 +74,9 @@ class Person: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         self.translatesAutoresizingMaskIntoConstraints = false
-
+        
         addPerson()
         addConstraints()
     }
@@ -83,19 +88,19 @@ class Person: UIView {
     func addPerson(){
         
         self.container.addArrangedSubview(imPerson)
-
+        
         self.container.addArrangedSubview(tfValueFirstPerson)
         self.container.addArrangedSubview(btnSendValue)
         self.container.addArrangedSubview(lbValue)
         
         self.addSubview(container)
     }
-        
+    
     func addConstraints(){
         NSLayoutConstraint.activate([
             
             self.container.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-
+            
             self.container.topAnchor.constraint(equalTo: self.topAnchor),
             self.container.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -103,17 +108,15 @@ class Person: UIView {
         ])
     }
     
-    @objc func editValueFirstPerson(_ textField: UITextField){
-        guard let name = textField.accessibilityIdentifier else { return }
-
-        print(name)
+    @objc func setValueFirstPerson(_ button: UIButton){
+        guard let nameTf = self.tfValueFirstPerson.accessibilityIdentifier else { return }
+        guard let nameButton = button.accessibilityIdentifier, let value = self.tfValueFirstPerson.text else { return }
+        
+    
+        if(nameTf == nameButton){
+            self.tfValueFirstPerson.text = ""
+            self.delegate?.sendValue(text: value, indentify: nameButton)
+        }
     }
     
-    @objc func setValueFirstPerson(_ button: UIButton){
-        guard let name = button.accessibilityIdentifier else { return }
-        print(name)
-
-        
-    }
-
 }

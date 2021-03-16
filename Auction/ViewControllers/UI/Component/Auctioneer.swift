@@ -1,6 +1,7 @@
 
 import UIKit
 
+
 class Auctioneer: UIView {
     
     //Atributtes
@@ -13,7 +14,7 @@ class Auctioneer: UIView {
         return iv
     }()
     
-    let lbValue: UILabel = {
+    var lbValue: UILabel = {
         let lb = UILabel()
         lb.backgroundColor = .gray
         lb.font = .systemFont(ofSize: 25, weight: .bold)

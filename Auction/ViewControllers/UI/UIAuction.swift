@@ -7,28 +7,31 @@
 
 import UIKit
 
+
+
 class UIAuction: UIView {
     
+
     let personOne: Person = {
         let person = Person()
-        person.btnSendValue.accessibilityIdentifier = "button1"
-        person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson1"
+        person.btnSendValue.accessibilityIdentifier = "person1"
+        person.tfValueFirstPerson.accessibilityIdentifier = "person1"
 
         return person
     }()
         
     let personTwo: Person = {
         let person = Person()
-        person.btnSendValue.accessibilityIdentifier = "button2"
-        person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson2"
+        person.btnSendValue.accessibilityIdentifier = "person2"
+        person.tfValueFirstPerson.accessibilityIdentifier = "person2"
 
         return person
     }()
     
     let personThree: Person = {
         let person = Person()
-        person.btnSendValue.accessibilityIdentifier = "button3"
-        person.tfValueFirstPerson.accessibilityIdentifier = "tfValueFirstPerson3"
+        person.btnSendValue.accessibilityIdentifier = "person3"
+        person.tfValueFirstPerson.accessibilityIdentifier = "person3"
 
         return person
     }()
@@ -60,6 +63,8 @@ class UIAuction: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+ 
     func addUIAuctioneer(){
         self.addSubview(auctioneer)
 
