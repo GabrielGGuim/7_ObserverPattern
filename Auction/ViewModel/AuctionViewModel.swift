@@ -40,6 +40,7 @@ class PersonViewModel{
 class AuctioneerViewModel{
     
     var finishAuction = 15
+    static var arrayTimer = [Timer]()
     
     var value = 0
     
@@ -48,24 +49,34 @@ class AuctioneerViewModel{
 //    typealias update = updateTimer
     
     func startTimer(completed: @escaping ((Int)->())){
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
-            
-            self.finishAuction -= 1
-            print(self.finishAuction)
-            
+
+        let timerValue = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+
             if(self.finishAuction == 0){
                 timer.invalidate()
+            }else{
+                self.finishAuction -= 1
             }
-            
+        
             completed(self.finishAuction)
         }
+        self.validateTimer(time: timerValue)
+
+
     }
     
-//    func sendValue(value: Int){
-//        print("ola?")
-//        self.startTimer()
-//        self.value = value
-//    }
+    func validateTimer(time:Timer){
+   
+        AuctioneerViewModel.arrayTimer.append(time)
+
+        if(AuctioneerViewModel.arrayTimer.count > 1){
+            AuctioneerViewModel.arrayTimer.first?.invalidate()
+            AuctioneerViewModel.arrayTimer.removeFirst()
+            self.finishAuction = 16
+        }
+
+    }
+
 }
 
 

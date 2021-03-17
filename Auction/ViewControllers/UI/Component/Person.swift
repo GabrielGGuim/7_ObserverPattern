@@ -14,6 +14,8 @@ protocol SendValueProtocol: class{
 class Person: UIView {
     
     weak var delegate: SendValueProtocol?
+    
+    static var maxValue = Int()
 
     let imPerson: UIImageView = {
         let iv = UIImageView()
@@ -111,12 +113,15 @@ class Person: UIView {
     @objc func setValueFirstPerson(_ button: UIButton){
         guard let nameTf = self.tfValueFirstPerson.accessibilityIdentifier else { return }
         guard let nameButton = button.accessibilityIdentifier, let value = self.tfValueFirstPerson.text else { return }
+
         
-    
-        if(nameTf == nameButton){
-            self.tfValueFirstPerson.text = ""
-            self.delegate?.sendValue(text: value, indentify: nameButton)
+        if(Int(value)! >= Person.maxValue){
+            Person.maxValue = Int(value)!
+            if(nameTf == nameButton){
+                self.tfValueFirstPerson.text = ""
+                self.delegate?.sendValue(text: value, indentify: nameButton)
+            }
         }
     }
-    
+
 }

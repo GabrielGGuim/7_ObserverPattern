@@ -33,7 +33,6 @@ class ViewController: UIViewController {
 
 extension ViewController: SendValueProtocol{
     func sendValue(text: String, indentify: String) {
-        
         self.uiAuction.auctioneer.lbValue.text = text
         
         self.viewModel.startTimer { [weak self] (time) in
