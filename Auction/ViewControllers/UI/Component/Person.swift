@@ -125,3 +125,10 @@ class Person: UIView {
     }
 
 }
+
+extension Person: Observer{
+    func update(_ notifyValue: Any) {
+        let value = notifyValue as! Int
+        self.lbValue.text = String(value)
+    }
+}

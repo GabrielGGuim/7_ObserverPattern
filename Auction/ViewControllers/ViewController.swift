@@ -15,26 +15,34 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupAuctioneer()
+//        setupAuctioneer()
 
         self.uiAuction.personOne.delegate = self
         self.uiAuction.personTwo.delegate = self
         self.uiAuction.personThree.delegate = self
+        
+        AuctioneerViewModel.bindPeopleModel.register(self.uiAuction.personOne)
+        AuctioneerViewModel.bindPeopleModel.register(self.uiAuction.personTwo)
+        AuctioneerViewModel.bindPeopleModel.register(self.uiAuction.personThree)
+        AuctioneerViewModel.bindPeopleModel.register(self.uiAuction.auctioneer)
 
+        
     }
 
     
-    func setupAuctioneer(){
-        self.uiAuction.auctioneer.lbValue.text = String(self.viewModel.value)
-        self.uiAuction.auctioneer.lbTime.text = String(self.viewModel.finishAuction)
-
-    }
+//    func setupAuctioneer(){
+//        self.uiAuction.auctioneer.lbValue.text = String(self.viewModel.value)
+//        self.uiAuction.auctioneer.lbTime.text = String(self.viewModel.finishAuction)
+//
+//    }
 }
 
 extension ViewController: SendValueProtocol{
     func sendValue(text: String, indentify: String) {
-        self.uiAuction.auctioneer.lbValue.text = text
         
+        AuctioneerViewModel.bindPeopleModel.value = Int(text)!
+        
+        print(indentify)
         self.viewModel.startTimer { [weak self] (time) in
             self!.uiAuction.auctioneer.lbTime.text = String(time)
         }

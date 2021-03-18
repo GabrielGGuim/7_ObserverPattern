@@ -7,46 +7,43 @@
 
 import Foundation
 
-
-protocol PersonProtocol{
-    var personValue: Float {get}
-    var personName: String {get}
-    var notificationPersonModel: PersonModel {get}
-}
-
-extension PersonModel: PersonProtocol{
-    var personValue: Float {
-        return value
-    }
-    
-    var personName: String {
-        return name
-    }
-    
-    var notificationPersonModel: PersonModel{
-        return self
-    }
-    
-    
-}
-
-class PersonViewModel{
-    
-    static var bindPeopleModel = Subject<Float>()
-    
-    var value = 0
-}
+//
+//protocol PersonProtocol{
+//    var personValue: Float {get}
+//    var personName: String {get}
+//    var notificationPersonModel: PersonModel {get}
+//}
+//
+//extension PersonModel: PersonProtocol{
+//    var personValue: Float {
+//        return value
+//    }
+//    
+//    var personName: String {
+//        return name
+//    }
+//    
+//    var notificationPersonModel: PersonModel{
+//        return self
+//    }
+//    
+//    
+//}
+//
+//class PersonViewModel{
+//    
+//    
+//    var value = 0
+//}
 
 class AuctioneerViewModel{
     
     var finishAuction = 15
     static var arrayTimer = [Timer]()
     
+    static var bindPeopleModel = Subject<Int>()
+
     var value = 0
-    
-//    var updateTimer:
-    
-//    typealias update = updateTimer
     
     func startTimer(completed: @escaping ((Int)->())){
 
@@ -61,8 +58,6 @@ class AuctioneerViewModel{
             completed(self.finishAuction)
         }
         self.validateTimer(time: timerValue)
-
-
     }
     
     func validateTimer(time:Timer){

@@ -30,7 +30,7 @@ class Auctioneer: UIView {
         lb.backgroundColor = .gray
         lb.font = .systemFont(ofSize: 25, weight: .bold)
         lb.textAlignment = .center
-        lb.text = "Time"
+        lb.text = "15"
         lb.translatesAutoresizingMaskIntoConstraints = false
         
         return lb
@@ -81,4 +81,12 @@ class Auctioneer: UIView {
         ])
     }
     
+}
+
+extension Auctioneer: Observer{
+    func update(_ notifyValue: Any) {
+        let value = notifyValue as! Int
+        self.lbValue.text = String(value)
+    }
+  
 }
