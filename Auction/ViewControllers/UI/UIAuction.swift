@@ -1,13 +1,5 @@
-//
-//  viewUI.swift
-//  Auction
-//
-//  Created by Gabriel Gonçalves Guimarães on 10/03/21.
-//
 
 import UIKit
-
-
 
 class UIAuction: UIView {
     
@@ -16,6 +8,7 @@ class UIAuction: UIView {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "person1"
         person.tfValueFirstPerson.accessibilityIdentifier = "person1"
+        person.lbName.text = "person 1"
 
         return person
     }()
@@ -24,6 +17,7 @@ class UIAuction: UIView {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "person2"
         person.tfValueFirstPerson.accessibilityIdentifier = "person2"
+        person.lbName.text = "person 2"
 
         return person
     }()
@@ -32,11 +26,23 @@ class UIAuction: UIView {
         let person = Person()
         person.btnSendValue.accessibilityIdentifier = "person3"
         person.tfValueFirstPerson.accessibilityIdentifier = "person3"
+        person.lbName.text = "person 3"
 
         return person
     }()
 
     let auctioneer = Auctioneer()
+    
+    let lbwinner: UILabel = {
+        let lb = UILabel()
+        lb.backgroundColor = .lightGray
+        lb.font = .systemFont(ofSize: 25, weight: .bold)
+        lb.textAlignment = .center
+        lb.text = "Winner"
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        return lb
+    }()
+
     
     var container: UIStackView = {
         let container = UIStackView(frame: .zero)
@@ -84,6 +90,7 @@ class UIAuction: UIView {
         container.addArrangedSubview(personThree)
 
         self.addSubview(container)
+        self.addSubview(lbwinner)
             
         NSLayoutConstraint.activate([
 
@@ -92,7 +99,12 @@ class UIAuction: UIView {
 
             self.container.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.container.heightAnchor.constraint(equalToConstant: 200)
+            self.container.heightAnchor.constraint(equalToConstant: 200),
+            
+            self.lbwinner.topAnchor.constraint(equalTo: self.container.bottomAnchor, constant: 10),
+            self.lbwinner.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.lbwinner.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+
         ])
     }
 

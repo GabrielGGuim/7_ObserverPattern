@@ -12,8 +12,6 @@
 		C0B51F4825FBB8AF0061CE4D /* Auctioneer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B51F4725FBB8AF0061CE4D /* Auctioneer.swift */; };
 		C0B51F5225FEB3DB0061CE4D /* Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B51F5125FEB3DB0061CE4D /* Bind.swift */; };
 		C0B51F5625FEB50F0061CE4D /* AuctionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B51F5525FEB50F0061CE4D /* AuctionViewModel.swift */; };
-		C0B51F5A25FEB53B0061CE4D /* AuctioneerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B51F5925FEB53B0061CE4D /* AuctioneerModel.swift */; };
-		C0B51F5F25FEB5B30061CE4D /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B51F5E25FEB5B30061CE4D /* PersonModel.swift */; };
 		C0EE21E925F860A5008C1DA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE21E825F860A5008C1DA0 /* AppDelegate.swift */; };
 		C0EE21EB25F860A5008C1DA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE21EA25F860A5008C1DA0 /* SceneDelegate.swift */; };
 		C0EE21ED25F860A5008C1DA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE21EC25F860A5008C1DA0 /* ViewController.swift */; };
@@ -27,8 +25,6 @@
 		C0B51F4725FBB8AF0061CE4D /* Auctioneer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auctioneer.swift; sourceTree = "<group>"; };
 		C0B51F5125FEB3DB0061CE4D /* Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bind.swift; sourceTree = "<group>"; };
 		C0B51F5525FEB50F0061CE4D /* AuctionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewModel.swift; sourceTree = "<group>"; };
-		C0B51F5925FEB53B0061CE4D /* AuctioneerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctioneerModel.swift; sourceTree = "<group>"; };
-		C0B51F5E25FEB5B30061CE4D /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		C0EE21E525F860A5008C1DA0 /* Auction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EE21E825F860A5008C1DA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0EE21EA25F860A5008C1DA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,15 +88,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C0B51F5825FEB52C0061CE4D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C0B51F5925FEB53B0061CE4D /* AuctioneerModel.swift */,
-				C0B51F5E25FEB5B30061CE4D /* PersonModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C0EE21DC25F860A5008C1DA0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +107,6 @@
 		C0EE21E725F860A5008C1DA0 /* Auction */ = {
 			isa = PBXGroup;
 			children = (
-				C0B51F5825FEB52C0061CE4D /* Model */,
 				C0B51F5425FEB4E70061CE4D /* ViewModel */,
 				C0B51F5025FEB3C50061CE4D /* Utils */,
 				C0B51F4C25FEB33C0061CE4D /* ViewControllers */,
@@ -204,14 +190,12 @@
 			files = (
 				C0B51F5625FEB50F0061CE4D /* AuctionViewModel.swift in Sources */,
 				C0B51F3B25FB10F30061CE4D /* Person.swift in Sources */,
-				C0B51F5F25FEB5B30061CE4D /* PersonModel.swift in Sources */,
 				C0B51F3425F877770061CE4D /* UIAuction.swift in Sources */,
 				C0EE21ED25F860A5008C1DA0 /* ViewController.swift in Sources */,
 				C0EE21E925F860A5008C1DA0 /* AppDelegate.swift in Sources */,
 				C0B51F4825FBB8AF0061CE4D /* Auctioneer.swift in Sources */,
 				C0B51F5225FEB3DB0061CE4D /* Bind.swift in Sources */,
 				C0EE21EB25F860A5008C1DA0 /* SceneDelegate.swift in Sources */,
-				C0B51F5A25FEB53B0061CE4D /* AuctioneerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

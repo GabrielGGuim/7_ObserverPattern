@@ -5,7 +5,6 @@ protocol Observer {
     func update(_ notifyValue: Any)
 }
 
-
 class Subject<T>{
 
     var observers: [Observer] = [Observer]()
@@ -15,7 +14,6 @@ class Subject<T>{
         didSet{
             if let value = value{
                 notify(with: value)
-                   
             }
         }
     }

@@ -1,73 +1,36 @@
-//
-//  AuctionViewModel.swift
-//  Auction
-//
-//  Created by Gabriel Gonçalves Guimarães on 14/03/21.
-//
 
 import Foundation
 
-//
-//protocol PersonProtocol{
-//    var personValue: Float {get}
-//    var personName: String {get}
-//    var notificationPersonModel: PersonModel {get}
-//}
-//
-//extension PersonModel: PersonProtocol{
-//    var personValue: Float {
-//        return value
-//    }
-//    
-//    var personName: String {
-//        return name
-//    }
-//    
-//    var notificationPersonModel: PersonModel{
-//        return self
-//    }
-//    
-//    
-//}
-//
-//class PersonViewModel{
-//    
-//    
-//    var value = 0
-//}
-
-class AuctioneerViewModel{
+class AuctionViewModel{
     
-    var finishAuction = 15
+    var finishAuction = 7
     static var arrayTimer = [Timer]()
     
-    static var bindPeopleModel = Subject<Int>()
-
-    var value = 0
+    var bind = Subject<Int>()
     
-    func startTimer(completed: @escaping ((Int)->())){
+    func startTimer(changedTimer: @escaping ((Int)->()), completedTimer: @escaping (()->()) ){
 
         let timerValue = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
 
             if(self.finishAuction == 0){
                 timer.invalidate()
+                completedTimer()
             }else{
                 self.finishAuction -= 1
             }
-        
-            completed(self.finishAuction)
+            changedTimer(self.finishAuction)
         }
         self.validateTimer(time: timerValue)
     }
     
     func validateTimer(time:Timer){
    
-        AuctioneerViewModel.arrayTimer.append(time)
+        AuctionViewModel.arrayTimer.append(time)
 
-        if(AuctioneerViewModel.arrayTimer.count > 1){
-            AuctioneerViewModel.arrayTimer.first?.invalidate()
-            AuctioneerViewModel.arrayTimer.removeFirst()
-            self.finishAuction = 16
+        if(AuctionViewModel.arrayTimer.count > 1){
+            AuctionViewModel.arrayTimer.first?.invalidate()
+            AuctionViewModel.arrayTimer.removeFirst()
+            self.finishAuction = 8
         }
 
     }

@@ -16,7 +16,17 @@ class Person: UIView {
     weak var delegate: SendValueProtocol?
     
     static var maxValue = Int()
-
+    
+    var lbName: UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 15, weight: .bold)
+        lb.textAlignment = .center
+        lb.text = "Name"
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        
+        return lb
+    }()
+    
     let imPerson: UIImageView = {
         let iv = UIImageView()
         
@@ -63,6 +73,7 @@ class Person: UIView {
         return lb
     }()
     
+    
     let container: UIStackView = {
         let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
@@ -89,8 +100,8 @@ class Person: UIView {
     
     func addPerson(){
         
+        self.container.addArrangedSubview(lbName)
         self.container.addArrangedSubview(imPerson)
-        
         self.container.addArrangedSubview(tfValueFirstPerson)
         self.container.addArrangedSubview(btnSendValue)
         self.container.addArrangedSubview(lbValue)
@@ -111,19 +122,32 @@ class Person: UIView {
     }
     
     @objc func setValueFirstPerson(_ button: UIButton){
+        
         guard let nameTf = self.tfValueFirstPerson.accessibilityIdentifier else { return }
         guard let nameButton = button.accessibilityIdentifier, let value = self.tfValueFirstPerson.text else { return }
-
         
-        if(Int(value)! >= Person.maxValue){
-            Person.maxValue = Int(value)!
+        if(validateGreaterValueTf()){
             if(nameTf == nameButton){
                 self.tfValueFirstPerson.text = ""
                 self.delegate?.sendValue(text: value, indentify: nameButton)
             }
+        }else{
+            self.tfValueFirstPerson.text = ""
         }
     }
-
+    
+    func validateGreaterValueTf() -> Bool {
+        guard let value = self.tfValueFirstPerson.text else { return false}
+        
+        guard let valueInt = Int(value) else {return false}
+        
+        if(valueInt > Person.maxValue){
+            Person.maxValue = Int(value)!
+            return true
+        }
+        return false
+    }
+    
 }
 
 extension Person: Observer{

@@ -4,6 +4,7 @@ import UIKit
 
 class Auctioneer: UIView {
     
+   
     //Atributtes
     let imPerson: UIImageView = {
         let iv = UIImageView()
@@ -30,7 +31,7 @@ class Auctioneer: UIView {
         lb.backgroundColor = .gray
         lb.font = .systemFont(ofSize: 25, weight: .bold)
         lb.textAlignment = .center
-        lb.text = "15"
+        lb.text = "7"
         lb.translatesAutoresizingMaskIntoConstraints = false
         
         return lb
